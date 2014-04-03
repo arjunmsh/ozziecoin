@@ -1,30 +1,38 @@
-DarkCoin integration/staging tree
+Ozziecoin integration/staging tree
 ================================
 
-http://www.darkcoin.io
+http://www.ozziecoin.com
 
 Copyright (c) 2009-2013 Bitcoin Developers
 Copyright (c) 2013-2014 DarkCoin Developers
+Copyright (c) 2014 Ozziecoin Developers
 
-What is DarkCoin?
+What is Ozziecoin?
 ----------------
 
-DarkCoin is a lite version of Bitcoin using X11 as a proof-of-work algorithm.
- - Super secure hashing algorithm: 11 rounds of scientific hashing functions (blake, bmw, groestl, jh, keccak, skein, luffa, cubehash, shavite, simd, echo)
- - Block reward is controlled by moore's law: 2222222/(((Difficulty+2600)/9)^2)
- - GPU/CPU only mining
- - Block generation: 2.5 minutes
- - Difficulty Retargets every block using Dark Gravity Wave
- - Est. ~7M Coins in 2015, ~13M in 2020, ~23M in 2030
- - Anonymous blockchain using DarkSend technology (Based on CoinJoin): Beta Testing
+Ozziecoin uses a modified version of the bitcoin and darkcoin protocol.  The protocol was selected for energy efficiency reasons.  Internal testing indicated energy savings of between 30-50% compared to the litecoin algorithm.
+
+The bitcoin hashing algorithm was avoided due to the perceived centralisation of bitcoin transaction processing in large data centres.  The technology involved has evolved into specialised integrated circuits that only deep pocket investors are able to invest and reap large profits.  The tendency towards centralisation is viewed as a potential weakness.  Should governments try to control bitcoin, it would be relatively easy to direct a small number of data centres to operate an approved version of the bitcoin protocol.  Enforcing protocol change across a highly decentralised network of computers would be more difficult.
+
+For the above reasons, the X11 algorithm was selected to provide adequate diversification in transaction processing whilst mitigating the issue of botnet attacks if a pure CPU only hashing algorithm was selected.
+
+Protocol specifics
+------------------
+
+Hashing algorithm: X11 (aka the darkcoin algorithm)
+Block reward: 136,749 ozziecoins per block, constant
+Block generation: 2.5 minutes
+Difficulty re-targets: DGW ver 2.0
+Total ozziecoins: 2.3 Trillion ozziecoins over 40 years
+https://github.com/ozziecoin/ozziecoin.git
 
 For more information, as well as an immediately useable, binary version of
-the DarkCoin client sofware, see http://www.darkcoin.io.
+the Ozziecoin client sofware, see http://www.ozziecoin.com.
 
 License
 -------
 
-DarkCoin is released under the terms of the MIT license. See `COPYING` for more
+Ozziecoin is released under the terms of the MIT license. See `COPYING` for more
 information or see http://opensource.org/licenses/MIT.
 
 Development process
@@ -33,7 +41,7 @@ Development process
 Developers work in their own trees, then submit pull requests when they think
 their feature or bug fix is ready.
 
-If it is a simple/trivial/non-controversial change, then one of the DarkCoin
+If it is a simple/trivial/non-controversial change, then one of the Ozziecoin
 development team members simply pulls it.
 
 If it is a *more complicated or potentially controversial* change, then the patch
@@ -47,7 +55,7 @@ controversial.
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
 completely stable. [Tags](https://github.com/bitcoin/bitcoin/tags) are created
-regularly to indicate new official, stable release versions of DarkCoin.
+regularly to indicate new official, stable release versions of Ozziecoin.
 
 Testing
 -------
@@ -70,5 +78,5 @@ Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
 
     qmake BITCOIN_QT_TEST=1 -o Makefile.test bitcoin-qt.pro
     make -f Makefile.test
-    ./darkcoin-qt_test
+    ./ozziecoin-qt_test
 

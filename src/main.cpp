@@ -1090,8 +1090,10 @@ int64 static GetBlockValue(int nBits, int nHeight, int64 nFees)
     /* fixed bug caused diff to not be correctly calculated */
     if(nHeight > 4500) dDiff = ConvertBitsToDouble(nBits);
 
-    int64 nSubsidy = 1250; 
-   
+    if(nHeight < 4033)
+		int64 nSubsidy = 2852297; 
+	else
+		int64 nSubsidy = 1250;
 
     // printf("height %u diff %4.2f reward %i \n", nHeight, dDiff, nSubsidy);
     nSubsidy *= COIN;

@@ -1090,8 +1090,10 @@ int64 static GetBlockValue(int nBits, int nHeight, int64 nFees)
     /* fixed bug caused diff to not be correctly calculated */
     if(nHeight > 4500) dDiff = ConvertBitsToDouble(nBits);
 
-    if(nHeight > 4000)
+    if(nHeight > 4000) 
+	{
 		int64 nSubsidy = 625; 
+	}
 	else
 	{
 		if(nHeight < 3001)

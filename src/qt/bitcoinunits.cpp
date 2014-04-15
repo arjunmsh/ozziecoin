@@ -78,8 +78,8 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case BTC: return 7;
-    case mBTC: return 4;
+    case BTC: return 5;
+    case mBTC: return 2;
     //case uBTC: return 1;
     default: return 0;
     }

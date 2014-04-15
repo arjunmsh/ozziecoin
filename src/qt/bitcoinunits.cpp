@@ -13,7 +13,7 @@ QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
     QList<BitcoinUnits::Unit> unitlist;
     unitlist.append(BTC);
     unitlist.append(mBTC);
-    unitlist.append(uBTC);
+    //unitlist.append(uBTC);
     return unitlist;
 }
 
@@ -23,7 +23,7 @@ bool BitcoinUnits::valid(int unit)
     {
     case BTC:
     case mBTC:
-    case uBTC:
+    //case uBTC:
         return true;
     default:
         return false;
@@ -36,7 +36,7 @@ QString BitcoinUnits::name(int unit)
     {
     case BTC: return QString("OZC");
     case mBTC: return QString("mOZC");
-    case uBTC: return QString::fromUtf8("μOZC");
+    //case uBTC: return QString::fromUtf8("μOZC");
     default: return QString("???");
     }
 }
@@ -47,7 +47,7 @@ QString BitcoinUnits::description(int unit)
     {
     case BTC: return QString("Ozziecoins");
     case mBTC: return QString("Milli-Ozziecoins (1 / 1,000)");
-    case uBTC: return QString("Micro-Ozziecoins (1 / 1,000,000)");
+    //case uBTC: return QString("Micro-Ozziecoins (1 / 1,000,000)");
     default: return QString("???");
     }
 }
@@ -56,10 +56,10 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case BTC:  return 10000000;
-    case mBTC: return 10000;
-    case uBTC: return 10;
-    default:   return 10000000;
+    case BTC:  return 100000;
+    case mBTC: return 1000;
+    //case uBTC: return 10;
+    default:   return 100000;
     }
 }
 
@@ -69,7 +69,7 @@ int BitcoinUnits::amountDigits(int unit)
     {
     case BTC: return 11; // 23,000,000,000 (# digits, without commas)
     case mBTC: return 14; // 23,000,000,000,000
-    case uBTC: return 17; // 23,000,000,000,000,000
+    //case uBTC: return 17; // 23,000,000,000,000,000
     default: return 0;
     }
 }
@@ -80,7 +80,7 @@ int BitcoinUnits::decimals(int unit)
     {
     case BTC: return 7;
     case mBTC: return 4;
-    case uBTC: return 1;
+    //case uBTC: return 1;
     default: return 0;
     }
 }

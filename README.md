@@ -19,11 +19,11 @@ For the above reasons, the X11 algorithm was selected to provide adequate divers
 Protocol specifics
 ------------------
 
-Hashing algorithm: X11 (aka the darkcoin algorithm)
-Block reward: 136,749 ozziecoins per block, constant
+Hashing algorithm: X11 
+Block reward: 625 ozziecoins per block, constant
 Block generation: 2.5 minutes
 Difficulty re-targets: DGW ver 2.0
-Total ozziecoins: 2.3 Trillion ozziecoins over 40 years
+Total ozziecoins: 23 Billion ozziecoins over 80 years
 https://github.com/ozziecoin/ozziecoin.git
 
 For more information, as well as an immediately useable, binary version of

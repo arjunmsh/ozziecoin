@@ -31,7 +31,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x0000073ae9c6601a7cc2115a0a53bab660d9c32baf327950fd4b165b97ef63e6"); //mainnet
+uint256 hashGenesisBlock("0x0000041a42c085e191af5b2ee3524ce45b5c6368db30c5285e12c525139c2d31"); //mainnet
 
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Ozziecoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
@@ -2854,7 +2854,12 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xc1;
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
-        hashGenesisBlock = uint256("0x0000073ae9c6601a7cc2115a0a53bab660d9c32baf327950fd4b165b97ef63e6");
+        // CBlock(hash=00000bec10c5f36295d5edb139b4e5c3e1186482cbf2299d74c9d87958eb70cd, input=010000000000000000000000000000000000000000000000000000000000000000000000bedb0a3580602170a44a245bfe4e0f14dc91579f860c9a12fadc344232f7e9edd1ec4f53f0ff0f1ed7677ace, PoW=00000bec10c5f36295d5edb139b4e5c3e1186482cbf2299d74c9d87958eb70cd, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=ede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe, nTime=1397746897, nBits=1e0ffff0, nNonce=3464128471, vtx=1)
+        // CTransaction(hash=ede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+        // CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01043d534d482031342f30342f32303134204c6f7720696e74657265737420726174657320686176652070756d7065642075702073686172656d61726b657473)
+        // CTxOut(nValue=1250.00000000, scriptPubKey=040184710fa689ad5023690c80f3a4)
+        // vMerkleTree: ede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe 
+        hashGenesisBlock = uint256("0x00000bec10c5f36295d5edb139b4e5c3e1186482cbf2299d74c9d87958eb70cd");
     }
 
     //
@@ -2880,14 +2885,14 @@ bool InitBlockIndex() {
     // Only add the genesis block if not reindexing (in which case we reuse the one already on disk)
     if (!fReindex) {
         // Genesis Block:
-        // CBlock(hash=12a765e31ffd4059bada, PoW=0000050c34a64b415b6b, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=97ddfbbae6, nTime=1317972665, nBits=1e0ffff0, nNonce=2084524493, vtx=1)
-        //   CTransaction(hash=97ddfbbae6, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-        //     CTxIn(COutPoint(0000000000, -1), coinbase 04ffff001d0104404e592054696d65732030352f4f63742f32303131205374657665204a6f62732c204170706c65e280997320566973696f6e6172792c2044696573206174203536)
-        //     CTxOut(nValue=50.00000000, scriptPubKey=040184710fa689ad5023690c80f3a4)
-        //   vMerkleTree: 97ddfbbae6
+        // CBlock(hash=0000041a42c085e191af5b2ee3524ce45b5c6368db30c5285e12c525139c2d31, input=010000000000000000000000000000000000000000000000000000000000000000000000bedb0a3580602170a44a245bfe4e0f14dc91579f860c9a12fadc344232f7e9edccea4f53f0ff0f1e06d6d745, PoW=0000041a42c085e191af5b2ee3524ce45b5c6368db30c5285e12c525139c2d31, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=ede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe, nTime=1397746380, nBits=1e0ffff0, nNonce=1171772934, vtx=1)
+        // CTransaction(hash=ede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+        // CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01043d534d482031342f30342f32303134204c6f7720696e74657265737420726174657320686176652070756d7065642075702073686172656d61726b657473)
+        // CTxOut(nValue=1250.00000000, scriptPubKey=040184710fa689ad5023690c80f3a4)
+        // vMerkleTree: ede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe 
 
         // Genesis block        
-        const char* pszTimestamp = "SMH 19/03/2014 Australia drawn into global forex rigging probe";
+        const char* pszTimestamp = "SMH 14/04/2014 Low interest rates have pumped up sharemarkets";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2899,14 +2904,14 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1395244281;
+        block.nTime    = 1397746380;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 5055114;
+        block.nNonce   = 1171772934;
 
         if (fTestNet)
         {
-            block.nTime    = 1395244281;
-            block.nNonce   = 5055114;
+            block.nTime    = 1397746897;
+            block.nNonce   = 3464128471;
         }
 
         //// debug print
@@ -2914,7 +2919,7 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x3abad1661be0ca022589f509726cbc23d838f8ced9503c8ef6e39bd815490b03"));
+        assert(block.hashMerkleRoot == uint256("0xede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe"));
         block.print();
         assert(hash == hashGenesisBlock);
 

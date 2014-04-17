@@ -2762,10 +2762,10 @@ bool LoadBlockIndex()
 {
     if (fTestNet)
     {
-        pchMessageStart[0] = 0xfc;
-        pchMessageStart[1] = 0xc1;
-        pchMessageStart[2] = 0xb7;
-        pchMessageStart[3] = 0xdc;
+        pchMessageStart[0] = 0xed;
+        pchMessageStart[1] = 0xb2;
+        pchMessageStart[2] = 0xa8;
+        pchMessageStart[3] = 0xcd;
         // CBlock(hash=00000bec10c5f36295d5edb139b4e5c3e1186482cbf2299d74c9d87958eb70cd, input=010000000000000000000000000000000000000000000000000000000000000000000000bedb0a3580602170a44a245bfe4e0f14dc91579f860c9a12fadc344232f7e9edd1ec4f53f0ff0f1ed7677ace, PoW=00000bec10c5f36295d5edb139b4e5c3e1186482cbf2299d74c9d87958eb70cd, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=ede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe, nTime=1397746897, nBits=1e0ffff0, nNonce=3464128471, vtx=1)
         // CTransaction(hash=ede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe, ver=1, vin.size=1, vout.size=1, nLockTime=0)
         // CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01043d534d482031342f30342f32303134204c6f7720696e74657265737420726174657320686176652070756d7065642075702073686172656d61726b657473)
@@ -3104,7 +3104,7 @@ bool static AlreadyHave(const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xfb, 0xc0, 0xb6, 0xdb }; // Ozziecoin: increase each by adding 2 to bitcoin's value.
+unsigned char pchMessageStart[4] = { 0xec, 0xb1, 0xa7, 0xcc }; // Ozziecoin: increase each by adding 2 to bitcoin's value.
 
 
 void static ProcessGetData(CNode* pfrom)

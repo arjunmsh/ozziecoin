@@ -1192,16 +1192,16 @@ void MapPort(bool)
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
-    {"OzziePrime", "107.170.235.189"},
-    {"Ozzie2", "128.199.214.79"},
-    {NULL, NULL},
+    {"", "107.170.235.189"},
+    {"", "128.199.214.79"},
+    {"ozziecoin.com", "seed1.ozziecoin.com"},
     {NULL, NULL}
 };
 
 static const char *strTestNetDNSSeed[][2] = {
-    {NULL, NULL},
-    {NULL, NULL},
-    {NULL, NULL}
+    {"ozziecoin.com", "testseed1.ozziecoin.com"},
+    {"", "107.170.235.189"},
+    {"", "128.199.214.79"}
 };
 
 void ThreadDNSAddressSeed()

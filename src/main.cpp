@@ -1093,9 +1093,9 @@ int64 static GetBlockValue(int nBits, int nHeight, int64 nFees)
 
     int64 nSubsidy = 0;   
     if(nHeight > 1152) nSubsidy = 625; 
-    if((nHeight >= 900)||(nHeight <= 1152)) nSubsidy = 0; 
-	if((nHeight >= 800)||(nHeight <= 899)) nSubsidy = 23000; 
-	if((nHeight >= 100)||(nHeight <= 799)) nSubsidy = 0;
+    if((nHeight >= 1100)&&(nHeight <= 1152)) nSubsidy = 0; 
+	if((nHeight >= 1000)&&(nHeight <= 1099)) nSubsidy = 23000; 
+	if((nHeight >= 100)&&(nHeight <= 999)) nSubsidy = 0;
     if(nHeight < 100) nSubsidy = 115046000;
 
     // printf("height %u diff %4.2f reward %i \n", nHeight, dDiff, nSubsidy);

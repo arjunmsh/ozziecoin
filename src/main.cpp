@@ -32,7 +32,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x0000041a42c085e191af5b2ee3524ce45b5c6368db30c5285e12c525139c2d31"); //mainnet
+uint256 hashGenesisBlock("0x000002fe93979a513c0ade8fa054ed4e4d07260705e692c6c3f5925f7476f1c7"); //mainnet
 
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Ozziecoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
@@ -51,9 +51,9 @@ bool fTxIndex = false;
 unsigned int nCoinCacheSize = 5000;
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
-int64 CTransaction::nMinTxFee = 1000;
+int64 CTransaction::nMinTxFee = 10;
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying) */
-int64 CTransaction::nMinRelayTxFee = 1000;
+int64 CTransaction::nMinRelayTxFee = 10;
 
 CMedianFilter<int> cPeerBlockCounts(8, 0); // Amount of blocks that other nodes claim to have
 
@@ -1090,13 +1090,11 @@ int64 static GetBlockValue(int nBits, int nHeight, int64 nFees)
 
     /* fixed bug caused diff to not be correctly calculated */
     dDiff = ConvertBitsToDouble(nBits);
-
-    int64 nSubsidy = 0;   
-    if(nHeight > 1152) nSubsidy = 625; 
-    if((nHeight >= 1100)&&(nHeight <= 1152)) nSubsidy = 0; 
-	if((nHeight >= 1000)&&(nHeight <= 1099)) nSubsidy = 23000; 
-	if((nHeight >= 100)&&(nHeight <= 999)) nSubsidy = 0;
-    if(nHeight < 100) nSubsidy = 115046000;
+	
+	int64 nSubsidy = 0;
+    if(nHeight > 1152) nSubsidy = 625;
+    if((nHeight >= 100)&&(nHeight <=1152 )) nSubsidy = 0;
+    if(nHeight < 100) nSubsidy = 115069000;
 
     // printf("height %u diff %4.2f reward %i \n", nHeight, dDiff, nSubsidy);
     nSubsidy *= COIN;
@@ -2779,16 +2777,16 @@ bool LoadBlockIndex()
 {
     if (fTestNet)
     {
-        pchMessageStart[0] = 0xed;
-        pchMessageStart[1] = 0xb2;
-        pchMessageStart[2] = 0xa8;
-        pchMessageStart[3] = 0xcd;
+        pchMessageStart[0] = 0xef;
+        pchMessageStart[1] = 0xb4;
+        pchMessageStart[2] = 0xaa;
+        pchMessageStart[3] = 0xcf;
         // CBlock(hash=00000bec10c5f36295d5edb139b4e5c3e1186482cbf2299d74c9d87958eb70cd, input=010000000000000000000000000000000000000000000000000000000000000000000000bedb0a3580602170a44a245bfe4e0f14dc91579f860c9a12fadc344232f7e9edd1ec4f53f0ff0f1ed7677ace, PoW=00000bec10c5f36295d5edb139b4e5c3e1186482cbf2299d74c9d87958eb70cd, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=ede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe, nTime=1397746897, nBits=1e0ffff0, nNonce=3464128471, vtx=1)
         // CTransaction(hash=ede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe, ver=1, vin.size=1, vout.size=1, nLockTime=0)
         // CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01043d534d482031342f30342f32303134204c6f7720696e74657265737420726174657320686176652070756d7065642075702073686172656d61726b657473)
         // CTxOut(nValue=1250.00000000, scriptPubKey=040184710fa689ad5023690c80f3a4)
         // vMerkleTree: ede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe 
-        hashGenesisBlock = uint256("0x00000bec10c5f36295d5edb139b4e5c3e1186482cbf2299d74c9d87958eb70cd");
+        hashGenesisBlock = uint256("0x0000039811e740552fd32f2b6c2497485c62f4c8b785791eb79394c1a60853aa");
     }
 
     //
@@ -2821,7 +2819,7 @@ bool InitBlockIndex() {
         // vMerkleTree: ede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe 
 
         // Genesis block        
-        const char* pszTimestamp = "SMH 14/04/2014 Low interest rates have pumped up sharemarkets";
+        const char* pszTimestamp = "Financial Times 25/04/2014 Obama and Abe fail to reach trade deal";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2833,14 +2831,14 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1397746380;
+        block.nTime    = 1397746381;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 1171772934;
+        block.nNonce   = 1172759397;
 
         if (fTestNet)
         {
-            block.nTime    = 1397746897;
-            block.nNonce   = 3464128471;
+            block.nTime    = 1397746380;
+            block.nNonce   = 1171796982;
         }
 
         //// debug print
@@ -2848,7 +2846,7 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0xede9f7324234dcfa129a0c869f5791dc140f4efe5b244aa470216080350adbbe"));
+        assert(block.hashMerkleRoot == uint256("0xf1abd5f863fb36aa606e2c25312832a7cf9bc152a0a6239ad1bd726ccf28af7e"));
         block.print();
         assert(hash == hashGenesisBlock);
 
@@ -3141,7 +3139,7 @@ bool static AlreadyHave(const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xec, 0xb1, 0xa7, 0xcc }; // Ozziecoin: increase each by adding 2 to bitcoin's value.
+unsigned char pchMessageStart[4] = { 0xee, 0xb3, 0xa9, 0xce }; // Ozziecoin: increase each by adding 2 to bitcoin's value.
 
 
 void static ProcessGetData(CNode* pfrom)
